@@ -46,7 +46,7 @@ public class DefaultKit extends Kit implements Listener {
 
         playerInv.setChestplate(ItemBuilder.get(new ItemStack(Material.IRON_CHESTPLATE, 1), "", true));
         playerInv.setChestplate(ItemBuilder.get(new ItemStack(Material.IRON_LEGGINGS, 1), "", true));
-        playerInv.setBoots(ItemBuilder.get(new ItemStack(Material.IRON_BOOTS, 1), "", true));
+        playerInv.setBoots(ItemBuilder.get(new ItemStack(Material.GOLD_BOOTS, 1), "", true));
 
     }
 
