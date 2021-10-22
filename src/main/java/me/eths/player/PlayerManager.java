@@ -2,6 +2,8 @@ package me.eths.player;
 
 import lombok.Getter;
 import me.eths.Strafed;
+import me.eths.tab.TabHandler;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -45,8 +47,11 @@ public class PlayerManager implements Listener {
     }
 
     public void deletePlayer(Player player) {
-        if (players.containsKey(player))
+        sPlayer pl = players.get(player);
+        if (players.containsKey(player)) {
+            pl.getGame().leave(pl);
             players.remove(player);
+        }
     }
 
     @EventHandler

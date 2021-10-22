@@ -5,6 +5,7 @@ import me.eths.kit.kits.DefaultKit;
 import me.eths.util.ChatColor;
 import me.eths.util.ItemBuilder;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -29,9 +30,21 @@ public class KitManager implements Listener {
     }
 
     public void openGUI(Player player) {
-        Inventory kitGUI = Bukkit.createInventory(null, 9, ChatColor.get("&eKit Selector"));
+        Inventory kitGUI = Bukkit.createInventory(null, 36, ChatColor.get("&eKit Selector"));
+
+
+        for (int i = 0; i < 36; i++) {
+            kitGUI.setItem(i, ItemBuilder.get(new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 15), "", false));
+        }
+
+        for (int i = 10; i < 23; i++) {
+            kitGUI.setItem(i, ItemBuilder.get(new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 14), "", false));
+            if (i == 17)
+                i++;
+        }
 
         int kitSlot = 10;
+
         for (Kit kit : kits) {
 
             kitGUI.setItem(kitSlot, kit.getItem());
@@ -46,7 +59,7 @@ public class KitManager implements Listener {
     @EventHandler
     public void kitInventoryClick(InventoryClickEvent e) {
         if (e.getClickedInventory().getName().contains("Kit Selector")) {
-
+            e.setCancelled(true);
         }
     }
 
